@@ -16,18 +16,17 @@ const Routers = function ({ history, app }) {
       component: App,
       getIndexRoute (nextState, cb) {
         require.ensure([], (require) => {
-          registerModel(app, require('models/dashboard'))
-          cb(null, { component: require('routes/dashboard/') })
-        }, 'dashboard')
+          registerModel(app, require('models/user'))
+          cb(null, { component: require('routes/home') })
+        }, 'home')
       },
       childRoutes: [
         {
-          path: 'dashboard',
+          path: 'home',
           getComponent (nextState, cb) {
             require.ensure([], (require) => {
-              registerModel(app, require('models/dashboard'))
-              cb(null, require('routes/dashboard/'))
-            }, 'dashboard')
+              cb(null, require('routes/home'))
+            }, 'home')
           },
         }, {
           path: 'user',
@@ -67,61 +66,12 @@ const Routers = function ({ history, app }) {
               cb(null, require('routes/UIElement/iconfont/'))
             }, 'UIElement-iconfont')
           },
-        }, {
-          path: 'UIElement/search',
-          getComponent (nextState, cb) {
-            require.ensure([], (require) => {
-              cb(null, require('routes/UIElement/search/'))
-            }, 'UIElement-search')
-          },
-        }, {
-          path: 'UIElement/dropOption',
-          getComponent (nextState, cb) {
-            require.ensure([], (require) => {
-              cb(null, require('routes/UIElement/dropOption/'))
-            }, 'UIElement-dropOption')
-          },
-        }, {
-          path: 'UIElement/layer',
-          getComponent (nextState, cb) {
-            require.ensure([], (require) => {
-              cb(null, require('routes/UIElement/layer/'))
-            }, 'UIElement-layer')
-          },
-        }, {
-          path: 'UIElement/dataTable',
-          getComponent (nextState, cb) {
-            require.ensure([], (require) => {
-              cb(null, require('routes/UIElement/dataTable/'))
-            }, 'UIElement-dataTable')
-          },
-        }, {
+        } , {
           path: 'UIElement/editor',
           getComponent (nextState, cb) {
             require.ensure([], (require) => {
               cb(null, require('routes/UIElement/editor/'))
             }, 'UIElement-editor')
-          },
-        }, {
-          path: 'chart/lineChart',
-          getComponent (nextState, cb) {
-            require.ensure([], (require) => {
-              cb(null, require('routes/chart/lineChart/'))
-            }, 'chart-lineChart')
-          },
-        }, {
-          path: 'chart/barChart',
-          getComponent (nextState, cb) {
-            require.ensure([], (require) => {
-              cb(null, require('routes/chart/barChart/'))
-            }, 'chart-barChart')
-          },
-        }, {
-          path: 'chart/areaChart',
-          getComponent (nextState, cb) {
-            require.ensure([], (require) => {
-              cb(null, require('routes/chart/areaChart/'))
-            }, 'chart-areaChart')
           },
         }, {
           path: 'post',

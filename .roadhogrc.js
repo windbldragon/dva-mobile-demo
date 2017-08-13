@@ -2,8 +2,8 @@ const path = require('path')
 const { version } = require('./package.json')
 
 const svgSpriteDirs = [
-  path.resolve(__dirname, 'src/svg/'),
-  require.resolve('antd').replace(/index\.js$/, '')
+  require.resolve('antd-mobile').replace(/warn\.js$/, ''),
+  path.resolve(__dirname, 'src/svg')
 ]
 
 export default {
@@ -30,12 +30,7 @@ export default {
       extraBabelPlugins: [
         "dva-hmr",
         "transform-runtime",
-        [
-          "import", {
-            "libraryName": "antd",
-            "style": true
-          }
-        ]
+        ["import", { "libraryName": "antd-mobile", "libraryDirectory": "lib", "style": "css" }]
       ]
     },
     production: {
@@ -43,7 +38,7 @@ export default {
         "transform-runtime",
         [
           "import", {
-            "libraryName": "antd",
+            "libraryName": "antd-mobile",
             "style": true
           }
         ]
