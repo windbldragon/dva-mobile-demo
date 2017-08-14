@@ -9,7 +9,7 @@ class InsureFooter extends React.Component {
   render(){
     return (
       <div className={styles.insureFooterMain}>
-        <div className={styles.insureFooterSer}>
+        <div className={this.props.leftTitle==='在线客服'?styles.insureFooterSer:styles.otherInsureFooterSer}>
           {this.props.leftTitle}
         </div>
         <div className={styles.insureFooterInsure} onClick={this.insure.bind(this)}>
@@ -19,7 +19,7 @@ class InsureFooter extends React.Component {
     )
   }
   insure(){
-    this.props.insure();
+      this.props.insure();
   }
 }
 

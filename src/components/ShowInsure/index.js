@@ -19,10 +19,14 @@ class ShowInsure extends React.Component{
           <p>投保日期</p>
           <input type="date"/>
         </div>
-        <InsureFooter leftTitle="价格 ￥336"/>
+        <InsureFooter insure={this.insure.bind(this)} leftTitle="价格 ￥336"/>
       </div>
     )
   }
+  insure(){
+      this.props.insure();
+  }
+
 }
 
 export default ShowInsure

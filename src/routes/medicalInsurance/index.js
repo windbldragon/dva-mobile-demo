@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import {NavBarHeader, CarouselPic, TabComponent,InsureFooter,ShowInsure} from './../../components'
 import styles from './index.less'
 import { Popup, List, Button, Icon } from 'antd-mobile';
+import { browserHistory } from 'react-router';
+
 
 class MedicalInsurance extends React.Component {
   constructor(props, context) {
@@ -93,8 +95,12 @@ class MedicalInsurance extends React.Component {
       };
     }
     Popup.show(<div>
-      <ShowInsure/>
+      <ShowInsure insure={this.skip.bind(this)}/>
     </div>, { animationType: 'slide-up', maskProps, maskClosable: true });
+  }
+  skip(){
+    Popup.hide();
+    browserHistory.push('/policy')
   }
 }
 
