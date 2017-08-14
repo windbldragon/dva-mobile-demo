@@ -32,6 +32,8 @@ const Home = () => {
           : ''
       }
       <TabBarFooter/>
+      <div style={{marginBottom:'100px'}}>
+      </div>
     </div>
   )
 }

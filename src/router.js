@@ -29,20 +29,20 @@ const Routers = function ({ history, app }) {
             }, 'home')
           },
         }, {
-          path: 'user',
+          path: 'medicalInsurance',
           getComponent (nextState, cb) {
             require.ensure([], (require) => {
-              registerModel(app, require('models/user'))
-              cb(null, require('routes/user/'))
-            }, 'user')
+              // registerModel(app, require('models/user'))
+              cb(null, require('routes/medicalInsurance'))
+            }, 'medicalInsurance')
           },
         }, {
-          path: 'user/:id',
+          path: 'policy',
           getComponent (nextState, cb) {
             require.ensure([], (require) => {
-              registerModel(app, require('models/user/detail'))
-              cb(null, require('routes/user/detail/'))
-            }, 'user-detail')
+              // registerModel(app, require('models/user/detail'))
+              cb(null, require('routes/policy/'))
+            }, 'policy')
           },
         }, {
           path: 'login',

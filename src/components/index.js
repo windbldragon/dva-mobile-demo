@@ -10,6 +10,9 @@ import CarouselPic from './Carousel/index.jsx'
 import GridMain from './GridMain/index.jsx'
 import Recommend from './Recommend/index.jsx'
 import TabBarFooter from './TabBarFooter/index.jsx'
+import TabComponent from './Tab/index.jsx'
+import InsureFooter from './InsureFooter'
+import ShowInsure from './ShowInsure'
 
 import layer from './layer'
 
@@ -26,5 +29,8 @@ export {
   CarouselPic,
   GridMain,
   Recommend,
-  TabBarFooter
+  TabBarFooter,
+  TabComponent,
+  InsureFooter,
+  ShowInsure,
 }

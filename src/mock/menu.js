@@ -4,23 +4,21 @@ const { apiPrefix } = config
 let database = [
   {
     id: '1',
-    icon: 'laptop',
-    name: 'Dashboard',
-    route: '/dashboard',
+    icon: 'home',
+    name: 'Home',
+    route: '/home',
   },
   {
     id: '2',
-    bpid: '1',
-    name: 'Users',
-    icon: 'user',
-    route: '/user',
+    name: 'MedicalInsurance',
+    icon: 'medicalInsurance',
+    route: '/medicalInsurance',
   },
   {
-    id: '7',
-    bpid: '1',
-    name: 'Posts',
-    icon: 'shopping-cart',
-    route: '/post',
+    id: '3',
+    name: 'Policy',
+    icon: 'policy',
+    route: '/policy',
   },
   {
     id: '21',
@@ -28,13 +26,6 @@ let database = [
     bpid: '2',
     name: 'User Detail',
     route: '/user/:id',
-  },
-  {
-    id: '3',
-    bpid: '1',
-    name: 'Request',
-    icon: 'api',
-    route: '/request',
   },
   {
     id: '4',
