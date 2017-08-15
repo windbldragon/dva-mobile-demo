@@ -12,13 +12,16 @@ class NavBarHeader extends React.Component{
     return(
       <div>
         <NavBar mode="drak"
-                onLeftClick={() => console.log('onLeftClick')}
+                onLeftClick={this.clickHandle.bind(this)}
                 rightContent={[
                   <Icon key="0" type="ellipsis" />,
                 ]}
         >{this.props.title}</NavBar>
       </div>
     )
+  }
+  clickHandle(){
+    window.history.back();
   }
 }
 

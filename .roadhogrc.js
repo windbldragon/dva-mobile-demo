@@ -3,7 +3,7 @@ const { version } = require('./package.json')
 
 const svgSpriteDirs = [
   require.resolve('antd-mobile').replace(/warn\.js$/, ''),
-  path.resolve(__dirname, 'src/svg')
+  path.resolve(__dirname, 'src/svg/cute')
 ]
 
 export default {
