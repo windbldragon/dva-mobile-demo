@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'dva'
 import {NavBarHeader, InsureFooter} from './../../components'
 import { List, InputItem, WhiteSpace,Picker } from 'antd-mobile';
 import styles from './index.less'
@@ -26,12 +27,12 @@ class Policy extends React.Component {
           >姓名</InputItem>
         </List>
         <List>
-          <InputItem
+          <InputItem ref="applicantID"
             placeholder="请输入证件号码"
           >证件号码</InputItem>
         </List>
         <List>
-          <InputItem
+          <InputItem ref="phone"
             placeholder="请输入手机号码"
           >手机号码</InputItem>
         </List>
@@ -64,13 +65,30 @@ class Policy extends React.Component {
           >手机号码</InputItem>
         </List>
         <div style={{marginBottom:'130px'}}></div>
-        <InsureFooter leftTitle="价格 ￥166"/>
+        <InsureFooter insure={this.insure.bind(this)} leftTitle="价格 ￥166"/>
       </div>
     )
+  }
+  componentDidMount(){
+    console.log(this.props.policyInfo)
   }
   changeInfo(v){
    this.setState({ identityInfo: v });
   }
+  insure(){
+    let values={
+      applicantName:'aaa',
+      applicantIDNum:2,
+    };
+    this.props.dispatch({ type: 'policy/insurePolicy', payload: values })
+  }
 }
 
-export default Policy
+function mapStateToProps(state) {
+    return {
+        policyInfo:state.policy
+    }
+}
+
+
+export default connect(mapStateToProps)(Policy)

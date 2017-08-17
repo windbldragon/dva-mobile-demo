@@ -23,5 +23,6 @@ module.exports = {
     menus: `${APIV1}/menus`,
     v1test: `${APIV1}/test`,
     v2test: `${APIV2}/test`,
+    insurePolicy:`${APIV1}/user/policy`,
   },
 }

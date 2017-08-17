@@ -40,7 +40,7 @@ const Routers = function ({ history, app }) {
           path: 'policy',
           getComponent (nextState, cb) {
             require.ensure([], (require) => {
-              // registerModel(app, require('models/user/detail'))
+              registerModel(app, require('models/policy'))
               cb(null, require('routes/policy/'))
             }, 'policy')
           },
