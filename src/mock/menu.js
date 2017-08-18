@@ -21,6 +21,12 @@ let database = [
     route: '/policy',
   },
   {
+    id: '4',
+    name: 'Policy',
+    icon: 'policy',
+    route: '/policy/:id',
+  },
+  {
     id: '21',
     mpid: '-1',
     bpid: '2',

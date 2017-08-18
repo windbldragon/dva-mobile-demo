@@ -4,17 +4,21 @@ import { connect } from 'dva'
 import {NavBarHeader, InsureFooter} from './../../components'
 import { List, InputItem, WhiteSpace,Picker } from 'antd-mobile';
 import styles from './index.less'
+import { createForm } from 'rc-form';
 
 
 class Policy extends React.Component {
   constructor(props,context){
     super(props,context);
-    this.state={
-      identityInfo:[1]
-    }
+      this.state={
+        identityInfo:['身份证'],
+      }
   }
   render(){
-    const district=[{label:'身份证',value:1},{label:'行驶证',value:2},{label:'营业执照',value:3}]
+    const { getFieldProps } = this.props.form;
+    const district=[{label:'身份证',value:'身份证'},{label:'行驶证',value:'行驶证'},{label:'营业执照',value:'营业执照'}]
+    console.log(this.props.policyInfo);
+    const policyInfo=this.props.policyInfo
     return(
       <div>
         <NavBarHeader title="订单填写"/>
@@ -23,16 +27,27 @@ class Policy extends React.Component {
         </div>
         <List>
           <InputItem
+            {...getFieldProps('applicantName',{
+              initialValue: policyInfo.applicantName,
+            })}
             placeholder="请输入姓名"
           >姓名</InputItem>
         </List>
         <List>
-          <InputItem ref="applicantID"
+          <InputItem
+            {...getFieldProps('applicantIDNum',{
+                initialValue: policyInfo.applicantIDNum,
+              }
+            )}
             placeholder="请输入证件号码"
           >证件号码</InputItem>
         </List>
         <List>
-          <InputItem ref="phone"
+          <InputItem
+            {...getFieldProps('applicantPhone',
+              {
+                initialValue: policyInfo.applicantPhone,
+              })}
             placeholder="请输入手机号码"
           >手机号码</InputItem>
         </List>
@@ -51,16 +66,28 @@ class Policy extends React.Component {
         </div>
         <List>
           <InputItem
+            {...getFieldProps('insuredName',
+              {
+                initialValue: policyInfo.insuredName,
+              })}
             placeholder="请输入姓名"
           >姓名</InputItem>
         </List>
         <List>
           <InputItem
+            {...getFieldProps('insuredIDNum',
+              {
+                initialValue: policyInfo.insuredIDNum,
+              })}
             placeholder="请输入证件号码"
           >证件号码</InputItem>
         </List>
         <List>
           <InputItem
+            {...getFieldProps('insuredPhone',
+              {
+                initialValue: policyInfo.insuredPhone,
+              })}
             placeholder="请输入手机号码"
           >手机号码</InputItem>
         </List>
@@ -76,11 +103,13 @@ class Policy extends React.Component {
    this.setState({ identityInfo: v });
   }
   insure(){
-    let values={
-      applicantName:'aaa',
-      applicantIDNum:2,
-    };
-    this.props.dispatch({ type: 'policy/insurePolicy', payload: values })
+    this.props.form.validateFields((error, values) => {
+      if(error){
+        return;
+      }
+      values.applicantType=this.state.identityInfo[0];
+      this.props.dispatch({ type: 'policy/insurePolicy', payload: values })
+    });
   }
 }
 
@@ -91,4 +120,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps)(Policy)
+export default connect(mapStateToProps)(createForm()(Policy))

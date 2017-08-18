@@ -24,5 +24,6 @@ module.exports = {
     v1test: `${APIV1}/test`,
     v2test: `${APIV2}/test`,
     insurePolicy:`${APIV1}/user/policy`,
+    getPolicy:`${APIV1}/user/policyInfo`,
   },
 }

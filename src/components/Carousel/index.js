@@ -30,7 +30,7 @@ class CarouselPic extends React.Component{
           {this.state.data.map((item,index) => (
             <a href="http://www.baidu.com" key={index} style={hProp}>
               <img
-                style={{width:'100%',height:'300px'}}
+                style={{width:'100%',height:'500px'}}
                 // src={`https://zos.alipayobjects.com/rmsportal/${index || 'QcWDkUhvYIVEcvtosxMF'}.png`}
                 src={item}
                 alt="icon"

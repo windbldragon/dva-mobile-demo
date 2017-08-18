@@ -1,29 +1,50 @@
-import {insure} from '../services/policy'
+import {insure,query} from '../services/policy'
+import pathToRegexp from 'path-to-regexp'
 
 export default {
   namespace: 'policy',
   state: {
     applicantName: '',
-    applicantIDNum: ''
+    applicantIDNum: '',
+    applicantPhone: '',
+    insuredName: '',
+    insuredIDNum: '',
+    insuredPhone: '',
+    applicantType:''
+  },
+
+  subscriptions: {
+    setup ({ dispatch, history }) {
+      history.listen((location) => {
+        const match=pathToRegexp('/policy/:id').exec(location.pathname)
+        if (match) {
+          dispatch({
+            type: 'queryPolicy',
+            payload: {id:match[1]},
+          })
+        }
+      })
+    },
   },
 
   effects: {
     *insurePolicy({payload}, {put, call}){
       const data=yield call(insure,payload);
-      const info={
-        applicantName:'bbb',
-        applicantIDNum:3,
-      }
       yield put({type:'updatePolicy',
-        payload:{
-          applicantName:'bbb',
-          applicantIDNum:3,
-        }
+        payload:data.policyInfo
       })
       if(data.success){
-        alert(123);
+        alert('保存成功');
       }else {
         throw data
+      }
+    },
+
+    *queryPolicy({payload},{put,call}){
+      const data=yield call(query,payload);
+      if(data.success){
+        yield put({type:'updatePolicy',
+          payload:data.data})
       }
     }
   },
@@ -35,5 +56,6 @@ export default {
         ...payload
       }
     },
-  }
+  },
+
 }

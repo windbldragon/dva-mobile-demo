@@ -32,7 +32,7 @@ const Home = () => {
           : ''
       }
       <TabBarFooter/>
-      <div style={{marginBottom:'100px'}}>
+      <div style={{marginBottom:'200px'}}>
       </div>
     </div>
   )

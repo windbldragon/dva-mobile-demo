@@ -36,7 +36,8 @@ const Routers = function ({ history, app }) {
               cb(null, require('routes/medicalInsurance'))
             }, 'medicalInsurance')
           },
-        }, {
+        },
+        {
           path: 'policy',
           getComponent (nextState, cb) {
             require.ensure([], (require) => {
@@ -44,7 +45,17 @@ const Routers = function ({ history, app }) {
               cb(null, require('routes/policy/'))
             }, 'policy')
           },
-        }, {
+        },
+        {
+          path: 'policy/:id',
+          getComponent (nextState, cb) {
+            require.ensure([], (require) => {
+              registerModel(app, require('models/policy'))
+              cb(null, require('routes/policy/'))
+            }, 'policy')
+          },
+        },
+        {
           path: 'login',
           getComponent (nextState, cb) {
             require.ensure([], (require) => {

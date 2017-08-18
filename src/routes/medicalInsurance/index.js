@@ -69,6 +69,7 @@ class MedicalInsurance extends React.Component {
         {
           this.state.otherTabStatus == 3 ? <div style={{textAlign:'center'}}>服务详情</div> : ''
         }
+        <div style={{marginBottom:'200px'}}></div>
         <InsureFooter leftTitle='在线客服' insure={this.insure.bind(this)}/>
       </div>
     )
