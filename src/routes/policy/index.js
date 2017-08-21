@@ -17,7 +17,7 @@ class Policy extends React.Component {
   render(){
     const { getFieldProps } = this.props.form;
     const district=[{label:'身份证',value:'身份证'},{label:'行驶证',value:'行驶证'},{label:'营业执照',value:'营业执照'}]
-    console.log(this.props.policyInfo);
+    console.log(this.props.policyInfo,1);
     const policyInfo=this.props.policyInfo
     return(
       <div>
@@ -29,8 +29,17 @@ class Policy extends React.Component {
           <InputItem
             {...getFieldProps('applicantName',{
               initialValue: policyInfo.applicantName,
+              normalize:(v,prev)=>{
+                if(v&&/^[\u0391-\uFFE5]+$/.test(v)){
+                  return v;
+                }else {
+                  alert('error');
+                  return prev;
+                }
+              }
             })}
             placeholder="请输入姓名"
+            defaultValue="22"
           >姓名</InputItem>
         </List>
         <List>
@@ -97,7 +106,24 @@ class Policy extends React.Component {
     )
   }
   componentDidMount(){
-    console.log(this.props.policyInfo)
+    console.log(this.props.policyInfo,2)
+  }
+  componentDidUpdate(){
+    console.log(this.props.policyInfo,3);
+    if(this.state.identityInfo[0]!==this.props.policyInfo.applicantType){
+      this.setState({
+        identityInfo:[this.props.policyInfo.applicantType]
+      })
+    }
+  }
+  componentWillMount(){
+    console.log(this.props.policyInfo,4)
+  }
+  componentWillReceiveProps(nextProps){
+    console.log(this.props.policyInfo,5)
+  }
+  componentWillUpdate(){
+    console.log(this.props.policyInfo,6)
   }
   changeInfo(v){
    this.setState({ identityInfo: v });

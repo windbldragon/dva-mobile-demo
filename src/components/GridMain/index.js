@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Icon, Grid} from 'antd-mobile'
-import { browserHistory } from 'react-router';
+import {browserHistory} from 'react-router';
 
 
 class GridMain extends React.Component {
@@ -14,42 +14,42 @@ class GridMain extends React.Component {
       {
         icon: (<Icon type='check-circle' size="xxs" color="blue"/>),
         text: `医疗险`,
-        id:1,
+        id: 1,
+      },
+      {
+        icon: (<Icon type='check-circle' size="xxs" color="blue"/>),
+        text: `医疗险个人`,
+        id: 2,
       },
       {
         icon: (<Icon type='check-circle' size="xxs" color="blue"/>),
         text: `医疗险`,
-        id:2,
+        id: 3,
       },
       {
         icon: (<Icon type='check-circle' size="xxs" color="blue"/>),
         text: `医疗险`,
-        id:3,
+        id: 4,
       },
       {
         icon: (<Icon type='check-circle' size="xxs" color="blue"/>),
         text: `医疗险`,
-        id:4,
+        id: 5,
       },
       {
         icon: (<Icon type='check-circle' size="xxs" color="blue"/>),
         text: `医疗险`,
-        id:5,
+        id: 6,
       },
       {
         icon: (<Icon type='check-circle' size="xxs" color="blue"/>),
         text: `医疗险`,
-        id:6,
+        id: 7,
       },
       {
         icon: (<Icon type='check-circle' size="xxs" color="blue"/>),
         text: `医疗险`,
-        id:7,
-      },
-      {
-        icon: (<Icon type='check-circle' size="xxs" color="blue"/>),
-        text: `医疗险`,
-        id:8,
+        id: 8,
       },
     ]
     return (
@@ -58,8 +58,19 @@ class GridMain extends React.Component {
       </div>
     )
   }
-  clickHandle(e){
-    browserHistory.push('/medicalInsurance')
+
+  clickHandle(e) {
+    console.log(e);
+    switch (e.id) {
+      case 1:
+        browserHistory.push('/medicalInsurance');
+        break;
+      case 2:
+        browserHistory.push('/policy/3');
+        break;
+      default:
+        browserHistory.push('/medicalInsurance');
+    }
   }
 }
 
